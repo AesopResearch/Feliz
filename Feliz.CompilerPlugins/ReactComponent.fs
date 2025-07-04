@@ -113,17 +113,17 @@ type ReactComponentAttribute(?exportDefault: bool, ?import: string, ?from:string
                 
                 match memo, callee with
                 // If the call is memo and the function has an identifier, we can set the displayName
-                | Some true, IdentExpr i ->
-                    Sequential [
+                | Some true, IdentExpr i -> expr
+                (*Sequential [
                         (AstUtils.makeSet callee "displayName" (AstUtils.makeStrConst i.Name))
                         expr
-                    ]
+                    ]*)
 
-                | Some true, Import(i, _, _) ->
-                    Sequential [
+                | Some true, Import(i, _, _) -> expr
+                (*Sequential [
                         (AstUtils.makeSet callee "displayName" (AstUtils.makeStrConst i.Selector))
                         expr
-                    ]
+                    ]*)
 
                 | Some true, _ ->
                     compiler.LogWarning("React component has no identifier or import. Component displayName will not be set.", ?range = range)
