@@ -458,6 +458,8 @@ type [<Erase>] React =
     /// </summary>
     static member inline useCancellationToken () = Internal.useCancellationToken ()
 
+    static member inline useNoMemo() = emitJsStatement () "'use no memo'"
+
 [<AutoOpen; Erase>]
 module ReactOverloadMagic =
     type React with
